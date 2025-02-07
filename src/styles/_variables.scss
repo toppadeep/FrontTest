@@ -1,0 +1,21 @@
+// Базовые цвета (можно использовать для расчётов)
+$light-bg: #ffffff;
+$light-text: #222222;
+$light-primary: #c5c5c5;
+$light-button: #FA7272;
+
+$dark-bg: #1D1D1D;
+$dark-primary: #262626;
+$dark-text: #ffffff;
+$dark-button: #FA7272;
+
+// Используем CSS-переменные для работы с темами
+:root {
+  --bg-color: #{$light-bg};
+  --text-color: #{$light-text};
+}
+
+[data-theme="dark"] {
+  --bg-color: #{$dark-bg};
+  --text-color: #{$dark-text};
+}
