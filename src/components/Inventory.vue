@@ -24,10 +24,12 @@ const handleDragOver = (event: DragEvent) => {
 };
 
 const handleDragEnter = (event: DragEvent) => {
+  event.preventDefault();
   isDragOver.value = true;
 };
 
 const handleDragLeave = (event: DragEvent) => {
+  event.preventDefault();
   isDragOver.value = false;
 };
 
