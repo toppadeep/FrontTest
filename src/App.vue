@@ -82,8 +82,8 @@ onMounted(() => {
       top: 8px
       right: 8px
       cursor: pointer
-.container
-  position: relative
+    .container
+      position: relative
 
 .theme-toggle-btn
   @include mixin.border()

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const isDragging = ref(false);
+const isDragOver = ref(false);
+
 import { ref, onMounted } from "vue";
 import { useInventoryStore } from "../store/inventoryStore";
 
@@ -10,8 +13,22 @@ onMounted(() => {
 });
 
 const onDragStart = (event: DragEvent, index: number) => {
+  isDragging.value = true;
   draggedIndex.value = index;
   event.dataTransfer?.setData("text/plain", index.toString());
+};
+
+const handleDragOver = (event: DragEvent) => {
+  event.preventDefault();
+  isDragOver.value = true;
+};
+
+const handleDragEnter = (event: DragEvent) => {
+  isDragOver.value = true;
+};
+
+const handleDragLeave = (event: DragEvent) => {
+  isDragOver.value = false;
 };
 
 const onDrop = (event: DragEvent, targetIndex: number) => {
@@ -21,6 +38,8 @@ const onDrop = (event: DragEvent, targetIndex: number) => {
 
   inventoryStore.swapItems(sourceIndex, targetIndex);
   draggedIndex.value = null;
+  isDragging.value = false;
+  isDragOver.value = false;
 };
 
 const emit = defineEmits<{
@@ -45,9 +64,12 @@ const sendData = (
     :key="item.id"
     draggable="true"
     @dragstart="onDragStart($event, index)"
-    @dragover.prevent
+    @dragover.prevent="handleDragOver"
+    @dragenter="handleDragEnter"
+    @dragleave="handleDragLeave"
     @drop="onDrop($event, index)"
     class="inventory__item"
+    :class="{ dragging: isDragging, 'drag-over': isDragOver }"
     @click="
       sendData('object', {
         id: item.id,
@@ -79,6 +101,25 @@ const sendData = (
     position: relative
     border-radius: 0
     background: var(--primary)
+    cursor: grab
+    transition: all 0.3s ease
+    user-select: none
+
+    &:active
+      cursor: grabbing
+      border-radius: 10px
+      background: var(--bg)
+
+    &.dragging
+      opacity: 0.5
+      transform: scale(0.95)
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+    &.drag-over
+      transform: scale(1.05)
+
+    &:hover
+      background: var(--bg)
+
     .amount__items
         @include mixins.center()
         border: 2px solid var(--border)
