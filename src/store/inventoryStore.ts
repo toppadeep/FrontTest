@@ -97,12 +97,13 @@ export const useInventoryStore = defineStore("inventory", {
       localStorage.setItem("items", JSON.stringify(this.items));
     },
     updateItemQuantity(itemId: number, newQuantity: number) {
-      const itemIndex = this.items.findIndex(item => item.id === itemId);
+      const itemIndex = this.items.findIndex((item) => item.id === itemId);
 
       if (itemIndex !== -1) {
         if (newQuantity > 0) {
           // Обновляем количество
-          this.items[itemIndex].amount = this.items[itemIndex].amount - newQuantity;
+          this.items[itemIndex].amount =
+            this.items[itemIndex].amount - newQuantity;
         } else {
           // Удаляем предмет, если количество 0
           this.items.splice(itemIndex, 1);

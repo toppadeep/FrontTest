@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import { useInventoryStore } from "../store/inventoryStore";
 
 const inventoryStore = useInventoryStore();
@@ -9,20 +9,13 @@ onMounted(() => {
   inventoryStore.initialize();
 });
 
-watch(
-  () => inventoryStore.items,
-  (newItems) => {
-
-  },
-  { deep: true },
-);
-
 const onDragStart = (event: DragEvent, index: number) => {
   draggedIndex.value = index;
   event.dataTransfer?.setData("text/plain", index.toString());
 };
 
 const onDrop = (event: DragEvent, targetIndex: number) => {
+  event.preventDefault();
   const sourceIndex = draggedIndex.value;
   if (sourceIndex === null || sourceIndex === targetIndex) return;
 
@@ -31,17 +24,30 @@ const onDrop = (event: DragEvent, targetIndex: number) => {
 };
 
 const emit = defineEmits<{
-  (e: "send-data", type: string, data: unknown): void;
+  (
+    e: "send-data",
+    type: string,
+    data: { id: number; image: string; amount: number; active: boolean },
+  ): void;
 }>();
 
-const sendData = (type: string, data: unknown) => {
+const sendData = (
+  type: string,
+  data: { id: number; image: string; amount: number; active: boolean },
+) => {
   emit("send-data", type, data);
 };
 </script>
 
 <template>
-  <div v-for="(item, index) in inventoryStore.items" :key="item.id" draggable="true"
-    @dragstart="onDragStart($event, index)" @dragover.prevent @drop="onDrop($event, index)" class="inventory__item"
+  <div
+    v-for="(item, index) in inventoryStore.items"
+    :key="item.id"
+    draggable="true"
+    @dragstart="onDragStart($event, index)"
+    @dragover.prevent
+    @drop="onDrop($event, index)"
+    class="inventory__item"
     @click="
       sendData('object', {
         id: item.id,
@@ -49,7 +55,8 @@ const sendData = (type: string, data: unknown) => {
         amount: item.amount,
         active: true,
       })
-      ">
+    "
+  >
     <img v-if="item.amount != 0" :src="item.image" alt="Empty" />
     <transition name="count">
       <p :key="item.amount" class="amount__items">{{ item.amount }}</p>
