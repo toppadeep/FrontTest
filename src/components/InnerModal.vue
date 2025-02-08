@@ -81,7 +81,7 @@ const sendMessage = () => {
     backdrop-filter: blur(16px)
     border-top-left-radius: 0
     border-bottom-left-radius: 0
-    background: variables.$dark-transparent
+    background: var(--transparent)
     position: absolute
     right: 0px
     width: 250px
@@ -97,9 +97,9 @@ const sendMessage = () => {
         cursor: pointer
         z-index: 999
     .button_close_modal:hover
-        background: variables.$dark-loader
+        background: var(--loader)
     .button_close_modal:active
-        background: variables.$dark-skeleton
+        background: var(--skeleton)
     .item__decsription
         height: 40%
     .invent
@@ -107,32 +107,36 @@ const sendMessage = () => {
         margin-bottom: 1em
         width: 50%
     form
-        @include mixins.center()
-        position: absolute
-        justify-content: space-around
-        flex-flow: column nowrap
-        padding: 1em
-        border-top: 1px solid variables.$dark-border
-        bottom: 0
+      @include mixins.center()
+      position: absolute
+      justify-content: space-around
+      flex-flow: column nowrap
+      padding: 1em
+      border-top: 1px solid var(--border)
+      bottom: 0
+      width: 100%
+      height: 133px
+      background: var(--primary)
+      input
         width: 100%
-        height: 133px
-        background: variables.$dark-primary
-        input
-            width: 100%
-            font-size: 14px
-            font-weight: 500
+        font-size: 14px
+        font-weight: 500
+        background: var(--bg)
+        color: var(--text)
     .wrapper__buttons__action
         @include mixins.center()
         width: 100%
         flex-flow: row nowrap
         .button__action--cancel
             @include mixins.button__preset()
-            background: variables.$dark-white
-            color: variables.$dark-bg
+            background: var(--accent)
+            color: var(--text)
             margin-right: 1em
             height: 33px
         .button__action--confirm
             @include mixins.button__preset()
+            background: var(--button)
+            color: var(--text)
             height: 33px
 
 .modal

@@ -14,7 +14,7 @@ import PropertiesOfItemGroup from "./PropertiesOfItemGroup.vue";
 <style lang="sass" scoped>
 
 @use "../styles/mixins.scss" as mixin
-@use "../styles/variables.scss" as variables
+@use "../styles/variables.scss" 
 
 .card
     display: flex
@@ -23,6 +23,6 @@ import PropertiesOfItemGroup from "./PropertiesOfItemGroup.vue";
     padding-top: 18px
     height: 500px
     width: 236px
-    background: variables.$dark-primary
+    background: var(--primary)
     @include mixin.border(1px)
 </style>

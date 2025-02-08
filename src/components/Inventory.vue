@@ -67,17 +67,17 @@ const sendData = (type: string, data: unknown) => {
     height: 100px
     cursor: pointer
     @include mixins.center()
-    border-right: 1px solid variables.$dark-border
-    border-bottom: 1px solid variables.$dark-border
+    border-right: 1px solid var(--border)
+    border-bottom: 1px solid var(--border)
     position: relative
     border-radius: 0
-    background: variables.$dark-primary
+    background: var(--primary)
     .amount__items
         @include mixins.center()
-        border: 2px solid variables.$dark-border
+        border: 2px solid var(--border)
         border-right: 0
         border-bottom: 0
-        color: variables.$dark-border
+        color: var(--border)
         font-weight: 700
         border-top-left-radius: 10px
         padding: 5px

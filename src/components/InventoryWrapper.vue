@@ -51,7 +51,7 @@ const handleMessage = () => {
     height: 500px
     margin: 0 auto
     margin-left: 2em
-    background: variables.$dark-primary
+    background: var(--primary)
     @include mixins.border()
 
 .slide-fade-enter-active,

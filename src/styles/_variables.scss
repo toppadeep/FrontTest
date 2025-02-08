@@ -1,8 +1,14 @@
-// Базовые цвета (можно использовать для расчётов)
-$light-bg: #ffffff;
-$light-text: #222222;
-$light-primary: #c5c5c5;
-$light-button: #fa7272;
+// Игровая светлая тема для инвентаря
+$light-bg: #1e1e2e;  // Глубокий темно-синий с фиолетовым оттенком, напоминает sci-fi дисплей
+$light-primary: #29293d;  // Темно-серый с легким синим оттенком для карточек предметов
+$light-transparent: rgba(41, 41, 61, 0.6);  // Прозрачные области с фоном интерфейса
+$light-text: #f9f5f5;  // Почти белый, но не яркий, чтобы не резать глаза
+$light-button: #ff007f;  // Яркий неоновый розовый для кнопок (взаимодействие с предметами)
+$light-border: #3d3d5c;  // Сине-серый цвет для границ элементов
+$light-skeleton: #2e2e4a;  // Цвет для загрузочных элементов (типа placeholder'ов)
+$light-loader: #0059ff;  // Яркий неоновый голубой (загрузка, индикаторы)
+$light-corral: #ffea00;  // Неоновый желтый для редких предметов и выделений
+$light-accent: #0c0b0b;  // Акцентный розовый для выделенных объектов и интерфейса
 
 $dark-bg: #1d1d1d;
 $dark-primary: #262626;
@@ -13,15 +19,58 @@ $dark-border: #4d4d4d;
 $dark-skeleton: #3c3c3c;
 $dark-loader: #444444;
 $dark-corral: #fa7272;
-$dark-white: #ffffff;
+$dark-accent: #ffffff;
+
+// Палитра S.T.A.L.K.E.R. для меню инвентаря
+$stalker-bg: #2d2d2d;  // Основной фон, темный серый
+$stalker-primary: #3a3a3a;  // Основной цвет для фона/панелей
+$stalker-transparent: rgba(60, 60, 60, 0.6);  // Прозрачность для фонов
+$stalker-text: #c4c4b7;  // Цвет текста, тусклый белый/серый
+$stalker-button: #8b6b3e;  // Цвет кнопок, коричневый/землистый
+$stalker-border: #56524d;  // Цвет границ, более темный серый/коричневый
+$stalker-skeleton: #3a3a38;  // Цвет для загрузочных экранов или пустых мест
+$stalker-loader: #6a6f50;  // Цвет для анимации загрузки, светлый оливковый
+$stalker-corral: #927a44;  // Цвет для акцентов, коричнево-золотистый
+$stalker-accent: #a89f74;  // Акцентный цвет, болотный/песочный
+
+
 
 // Используем CSS-переменные для работы с темами
 :root {
-  --bg-color: #{$light-bg};
-  --text-color: #{$light-text};
+  --bg: #{$light-bg};
+  --text: #{$light-text};
+  --primary: #{$light-primary};
+  --skeleton: #{$light-skeleton};
+  --loader: #{$light-loader};
+  --corral: #{$light-corral};
+  --accent: #{$light-accent};
+  --border: #{$light-border};
+  --button: #{$light-button};
+  --transparent: #{$light-transparent};
 }
 
 [data-theme="dark"] {
-  --bg-color: #{$dark-bg};
-  --text-color: #{$dark-text};
+  --bg: #{$dark-bg};
+  --text: #{$dark-text};
+  --primary: #{$dark-primary};
+  --skeleton: #{$dark-skeleton};
+  --loader: #{$dark-loader};
+  --corral: #{$dark-corral};
+  --accent: #{$dark-accent};
+  --border: #{$dark-border};
+  --button: #{$dark-button};
+  --transparent: #{$dark-transparent};
+}
+
+[data-theme="stalker"] {
+  --bg: #{$stalker-bg};
+  --text: #{$stalker-text};
+  --primary: #{$stalker-primary};
+  --skeleton: #{$stalker-skeleton};
+  --corral: #{$stalker-corral};
+  --loader: #{$stalker-loader};
+  --accent: #{$stalker-accent};
+  --border: #{$stalker-border};
+  --button: #{$stalker-button};
+  --transparent: #{$stalker-transparent};
 }

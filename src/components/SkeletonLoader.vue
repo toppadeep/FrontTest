@@ -24,7 +24,7 @@ const boxStyle = computed(() => ({
 @use "../styles/variables.scss" as variables
 
 .skeleton-container
-    background: linear-gradient(90deg, variables.$dark-skeleton 25%, variables.$dark-loader 50%, variables.$dark-skeleton 75%)
+    background: linear-gradient(90deg, var(--skeleton) 25%, var(--loader) 50%, var(--skeleton) 75%)
     background-size: 200% 100%
     animation: loading 1.5s infinite
 

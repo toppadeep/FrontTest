@@ -1,6 +1,7 @@
 @use "./variables" as *;
 
-@mixin border($size: 1px, $radius: 12px, $type: solid, $color: $dark-border) {
+
+@mixin border($size: 1px, $radius: 12px, $type: solid, $color: var(--border)) {
   border: $size $type $color;
   border-radius: $radius;
 }
@@ -30,12 +31,12 @@
   font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
-  background: $dark-corral;
-  color: $dark-white;
+  background: var(--corral);
+  color: var(--accent);
   transition: all 1s ease-out;
 
   &:hover {
-    box-shadow: 0 0 0.4em $dark-corral;
+    box-shadow: 0 0 0.4em var(--corral);
     cursor: pointer;
   }
 }
