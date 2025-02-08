@@ -1,15 +1,14 @@
 @mixin theme($bg-color, $text-color) {
-    background-color: $bg-color;
-    color: $text-color;
-  }
-  
-  // Светлая тема
-  .light-theme {
-    @include theme($light-bg, $light-text);
-  }
-  
-  // Тёмная тема
-  .dark-theme {
-    @include theme($dark-bg, $dark-text);
-  }
-  
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+// Светлая тема
+.light-theme {
+  @include theme($light-bg, $light-text);
+}
+
+// Тёмная тема
+.dark-theme {
+  @include theme($dark-bg, $dark-text);
+}

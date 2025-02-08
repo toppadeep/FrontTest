@@ -2,12 +2,18 @@
 $light-bg: #ffffff;
 $light-text: #222222;
 $light-primary: #c5c5c5;
-$light-button: #FA7272;
+$light-button: #fa7272;
 
-$dark-bg: #1D1D1D;
+$dark-bg: #1d1d1d;
 $dark-primary: #262626;
-$dark-text: #ffffff;
-$dark-button: #FA7272;
+$dark-transparent: rgba(38, 38, 38, 0.5);
+$dark-text: #444444;
+$dark-button: #fa7272;
+$dark-border: #4d4d4d;
+$dark-skeleton: #3c3c3c;
+$dark-loader: #444444;
+$dark-corral: #fa7272;
+$dark-white: #ffffff;
 
 // Используем CSS-переменные для работы с темами
 :root {
