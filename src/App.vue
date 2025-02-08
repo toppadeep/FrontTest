@@ -24,7 +24,6 @@ const toggleTheme = (): void => {
   localStorage.setItem("theme", theme.value);
 };
 
-
 onMounted(() => {
   document.documentElement.setAttribute("data-theme", theme.value);
 });
@@ -42,7 +41,12 @@ onMounted(() => {
     </div>
   </div>
   <div class="container">
-    <button class="theme-toggle-btn" @click="toggleTheme()" @mouseover="hover = true" @mouseleave="hover = false">
+    <button
+      class="theme-toggle-btn"
+      @click="toggleTheme()"
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+    >
       <i class="fas fa-cogs"></i>
       <span v-if="hover" class="tooltip">Сменить тему</span>
     </button>
@@ -78,7 +82,7 @@ onMounted(() => {
       top: 8px
       right: 8px
       cursor: pointer
-      .container
+.container
   position: relative
 
 .theme-toggle-btn

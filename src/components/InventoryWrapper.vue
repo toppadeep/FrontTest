@@ -9,7 +9,14 @@ const image = ref<string>("");
 const amount = ref<number>(0);
 const id = ref<number>(0);
 
-const handleData = (type: string, payload: unknown) => {
+interface Payload {
+  active: boolean;
+  image: string;
+  amount: number;
+  id: number;
+}
+
+const handleData = (type: string, payload: Payload) => {
   dataType.value = type;
   active.value = payload.active;
   image.value = payload.image;

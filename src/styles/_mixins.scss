@@ -1,6 +1,5 @@
 @use "./variables" as *;
 
-
 @mixin border($size: 1px, $radius: 12px, $type: solid, $color: var(--border)) {
   border: $size $type $color;
   border-radius: $radius;

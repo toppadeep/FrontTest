@@ -10,7 +10,7 @@ onMounted(() => {
 
 const changeQuantity = (itemId: number, newQuantity: number) => {
   inventoryStore.updateItemQuantity(itemId, newQuantity);
-  sendMessage()
+  sendMessage();
 };
 
 const isRequestForm = ref<boolean>(false);
@@ -39,7 +39,12 @@ const sendMessage = () => {
 </script>
 
 <template>
-  <div v-if="props.active" :key="props.id" class="wrapper__modal" :class="{ visible: props.active }">
+  <div
+    v-if="props.active"
+    :key="props.id"
+    class="wrapper__modal"
+    :class="{ visible: props.active }"
+  >
     <button class="button_close_modal" @click="sendMessage">
       <img src="../assets/carbon_close.png" alt="Close" />
     </button>
@@ -53,13 +58,28 @@ const sendMessage = () => {
       <button class="button" @click="ShowDeleteForm">Удалить предмет</button>
       <Transition name="slide-fade">
         <form v-if="isRequestForm" @submit.prevent="" action="">
-          <input v-if="!request" type="number" placeholder="Введите количество" @click="request = !request" />
-          <input v-else type="number" :max="props.amount" v-model="newQuantity" />
+          <input
+            v-if="!request"
+            type="number"
+            placeholder="Введите количество"
+            @click="request = !request"
+          />
+          <input
+            v-else
+            type="number"
+            :max="props.amount"
+            v-model="newQuantity"
+          />
           <div class="wrapper__buttons__action">
             <button class="button__action--cancel" @click="ShowDeleteForm">
               Отмена
             </button>
-            <button class="button__action--confirm" @click="changeQuantity(props.id, newQuantity)">Подтвердить</button>
+            <button
+              class="button__action--confirm"
+              @click="changeQuantity(props.id, newQuantity)"
+            >
+              Подтвердить
+            </button>
           </div>
         </form>
       </Transition>
